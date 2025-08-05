@@ -49,3 +49,8 @@ echo "charts/**/charts" >> .gitignore
 
 $ helm install argo-cd charts/argo-cd/
 
+# Option 2 - Install ArgoCD from helm charts with enabled metrics of Argo (will require prometheus and grafana for visualization)
+
+helm upgrade -i argocd --namespace argocd --set redis.exporter.enabled=true --set redis.metrics.enabled=true --set server.metrics.enabled=true --set controller.metrics.enabled=true a
+rgo/argo-cd --create-namespace
+
